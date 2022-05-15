@@ -44,11 +44,9 @@ Récupérer l'url via cette commande, garder l'url car il faudra la renseigner d
 minikube service list -n experimentation1
 ````
 
-|------------------|------------|-------------|----------------------------|
 |    NAMESPACE     |    NAME    | TARGET PORT |            URL             |
 |------------------|------------|-------------|----------------------------|
 | experimentation1 | my-service |        8080 | url à récupérer et à coller à la ligne 18 du fichier [experiment_1_deleting_pod](./experiment_1_deleting_pod.yaml) |
-|------------------|------------|-------------|----------------------------|
 
 
 Vous devez arriver sur une page similaire à celle-ci :
