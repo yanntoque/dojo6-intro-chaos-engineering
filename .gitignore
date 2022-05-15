@@ -1,0 +1,5 @@
+# git file
+.gitconfig
+# Ignoring chaostoolkit log and journal files
+*.log
+journal.json
