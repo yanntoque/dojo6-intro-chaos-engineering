@@ -1,0 +1,29 @@
+---
+version: 1.0.0
+title: Mon application est résiliente au drainage de noeuds
+description: Est-ce que mon application peut maintenir son nombre minimum de ressources ?
+secrets:
+  k8s:
+    KUBERNETES_CONTEXT: minikube
+tags:
+- kubernetes
+steady-state-hypothesis:
+  title: Mon application est disponible
+  probes:
+  - type: probe
+    name: ma-super-app-repond-normalement
+    tolerance: 200
+    provider:
+      type: http
+      url: http://192.168.64.32:31314 # ici remplacer cette url par le retour de la commande : minikube service -n experimentation1
+method:
+- type: action
+  name: terminate-db-pod
+  provider:
+    type: python
+    module: chaosk8s.pod.actions
+    func: terminate_pods
+    arguments:
+      ns: experimentation1
+  pauses:
+    after: 5
