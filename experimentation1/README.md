@@ -19,6 +19,11 @@ Voici la sortie de la console attentu :
 namespace/experimentation1 created
 ````
 
+Placez vous dans ce le dossier *experimentation1*  :
+````
+cd experimentation1
+````
+
 Placez vous dans ce namespace :
 ````
 kubectl config set-context --current --namespace=experimentation1
