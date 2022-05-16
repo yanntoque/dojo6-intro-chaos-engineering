@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-super-app
+  namespace: experimentation2
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      service: my-service
+  template:
+    metadata:
+      name: my-super-app
+      labels:
+        name: my-super-app
+        service: my-service
+        biz-app-id: retail
+    spec:
+      nodeSelector:
+        role: worker
+      containers:
+      - name: my-super-app
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        imagePullPolicy: Always
+        image: docker.io/chaosiq/sampleservice:0.1.0
+        resources:
+          limits:
+            cpu: 0.1
+            memory: 64Mi
+          requests:
+            cpu: 0.1
+            memory: 64Mi
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1

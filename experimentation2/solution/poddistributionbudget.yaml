@@ -1,0 +1,11 @@
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: my-super-app-pdb
+  namespace: experimentation2
+spec:
+  minAvailable: 6
+  selector:
+    matchLabels:
+      name: my-super-app

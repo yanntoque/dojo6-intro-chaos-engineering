@@ -14,7 +14,7 @@ chaos run experiment_1_deleting_pod.yaml
 ````
 
 
-Vous pouvez constater dans l'interface que désormais avec la solution mise en place même si un pod est supprimé il y en a 2 autres pour tenir accueillir le traffic :
+Vous pouvez constater dans l'interface que désormais avec la solution mise en place même si un pod est supprimé il y en a 2 autres pour accueillir le traffic :
 ![](../docs/podkillbutnoteffect.png)
 
 

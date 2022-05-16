@@ -1,4 +1,4 @@
-# DOJO #6 - Introduction au Chaos Engineering
+# DOJO #6 - Introduction au Chaos Engineering (Basé sur le livre [Learning Chaos Engineering: Discovering and Overcoming System Weaknesses Through Experimentation](https://www.oreilly.com/library/view/learning-chaos-engineering/9781492050995/))
 
 ## Instructions
 
@@ -13,9 +13,13 @@ Avant de pouvoir se lancer dans vos premières expérimentations liées au Chaos
 > Si vous n'avez pas Python 3 d'installé sur votre machine il faut suivre les intrusctions suivante pour l'installer :
 
 - sous Linux 🐧
-    * ```sudo apt-get install python3 python3-venv ```
+    ```
+    sudo apt-get install python3 python3-venv
+    ```
 - sous macOS 
-    * ```brew install python3 ```
+    ```
+    brew install python3
+    ```
 
 
 #### Créer un [environnement virtuel python](https://docs.python.org/3/tutorial/venv.html)
@@ -24,18 +28,22 @@ Afin de garder votre environnement python **bien ordonné** et **éviter les con
 
 Pour cela vous pouvez executer la commande suivante :
 
-```python3 -m venv ~/.venvs/chaostk ```
+```
+python3 -m venv ~/.venvs/chaostk
+```
 
 Après avoir créé l'environnement virtuel python nommé **chaostk**, il a besoin d'être activé à l'aide de la commande :
 
-```source ~/.venvs/chaostk/bin/activate```
+```
+source ~/.venvs/chaostk/bin/activate
+```
 
 Pour vérifier que vous êtes bien sous l'environnement **chaostk** vous pouvez lister les libraires à l'aide de la commande :
 ```
 pip list
 ```
 
-Normalement vous devez avoir un retour similaire à celui ci *(seulement 2 packages devrait être présents)*:
+Normalement vous devez avoir un retour similaire à celui ci *(seulement 2 packages devraient être présents)*:
 ```
 Package    Version
 ---------- -------
@@ -53,7 +61,7 @@ Pour les expérimentations que vous allez mettre en place, vous utiliserez [Kube
 
 
 
-#### Installer le client **kubectl** 
+#### Installer le client **kubectl**
 
 Pour intéragir avec Kubernetes au travers de la cli nous allons utiliser le binaire **kubectl**.
 
@@ -61,24 +69,13 @@ Pour intéragir avec Kubernetes au travers de la cli nous allons utiliser le bin
 ###### Linux 🐧
 
 ````
-sudo apt-get update && sudo apt-get install -y apt-transport-https
+curl -LO https://dl.k8s.io/release/v1.23.0/bin/linux/amd64/kubectl
 ````
 
 ````
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ````
 
-````
-echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
-````
-
-````
-sudo apt-get update
-````
-
-````
-sudo apt-get install -y kubectl=1.23.0
-````
 
 Afficher la version de **kubectl** à l'aide de la commande
 
@@ -116,7 +113,7 @@ Client Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.0", GitCom
 
 ###### Linux 🐧
 ````
-sudo apt-get install kubectx
+snap install kubectx
 ````
 
 
@@ -126,18 +123,7 @@ brew install kubectx
 ````
 
 
-####  Installer [l'hyperviseur **Hyperkit**](https://github.com/moby/hyperkit)
-
-
-#### Linux 🐧
-
-````
-    curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-hyperkit \
-    && chmod +x docker-machine-driver-hyperkit \
-    && sudo mv docker-machine-driver-hyperkit /usr/local/bin/ \
-    && sudo chown root:wheel /usr/local/bin/docker-machine-driver-hyperkit \
-    && sudo chmod u+s /usr/local/bin/docker-machine-driver-hyperkit
-````
+####  Installer [l'hyperviseur **Hyperkit**](https://github.com/moby/hyperkit) macOS
 
 #### macOS 
 
@@ -150,8 +136,18 @@ brew install hyperkit
 
 ##### Linux 🐧
 
+Suivre les intructions de cette page :
+https://kubernetes.io/fr/docs/tasks/tools/install-minikube/#installer-un-hyperviseur
+
 ````
-sudo apt get install minikube
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+  && chmod +x minikube
+````
+
+
+````
+sudo mkdir -p /usr/local/bin/
+sudo install minikube /usr/local/bin/
 ````
 
 ##### macOS 
@@ -164,6 +160,15 @@ brew install minikube
 ##### Créer un cluster [Kubernetes](https://github.com/kubernetes/kubernetes) avec 3 noeuds (1 master / **2 worker**)
 
 Lancer la commande
+
+##### Linux 🐧
+
+````
+minikube start --kubernetes-version v1.23.0 --nodes 3
+````
+
+
+##### macOS 
 
 ````
 minikube start --driver=hyperkit --kubernetes-version v1.23.0 --nodes 3
@@ -215,7 +220,7 @@ Vous devriez arriver sur cette page d'accueil :
 
 ## Installer [Chaos Toolkit](https://github.com/chaostoolkit/chaostoolkit)
 
-Il suffit d'éxecuter la commande suivante depuis votre environnement virtuel python **chaostk** (que vous avez précédemment): 
+Il suffit d'éxecuter la commande suivante depuis votre environnement virtuel python **chaostk** (que vous avez précédemment):
 
 ```
 pip install chaostoolkit

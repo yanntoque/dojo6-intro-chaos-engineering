@@ -13,13 +13,13 @@ Créer un namespace appelé *experimentation1* :
 kubectl create namespace experimentation1
 ````
 
-Voici la sortie de la console attentu :
+Voici la sortie de la console attendue :
 
 ````
 namespace/experimentation1 created
 ````
 
-Placez vous dans ce le dossier *experimentation1*  :
+Placez vous dans le dossier *experimentation1*  :
 ````
 cd experimentation1
 ````
@@ -70,14 +70,14 @@ Puis vous allez pouvoir lancer l'expérimentation :
 chaos run experiment_1_deleting_pod.yaml
 ````
 
-Côté dashboard on constate qu'un pod s'est bien fait supprimer : 
+Côté dashboard vous constatez qu'un pod s'est bien fait supprimé :
 ![podkill](docs/podkill.png)
 
-Côté sortie console on constate la chose suivante :
+Côté sortie console vous aurez une sortie similaire :
 ````
 [INFO] Validating the experiment's syntax
 [INFO] Experiment looks valid
-[INFO] Running experiment: Mon application est résiliente au drainage de noeuds
+[INFO] Running experiment: Est-ce que mon application peut maintenir son nombre minimum de ressources ?
 [INFO] Steady-state strategy: default
 [INFO] Rollbacks strategy: default
 [INFO] Steady state hypothesis: Mon application est disponible
@@ -98,7 +98,7 @@ Côté sortie console on constate la chose suivante :
 Que se passe t'il ?
 >
 
-# 🎉 Félicitations vous avez observé une faiblesse ! Il y'a bien une problème dans la configuration actuelle 
+# 🎉 Félicitations vous avez observé une faiblesse ! Il y'a bien un problème dans la configuration actuelle 
 
 Que pourrions nous faire *très simplement* pour éviter ce genre de situation ?
 > La réponse est de S _ _ _ E - _ P

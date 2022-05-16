@@ -1,0 +1,49 @@
+---
+version: 1.0.0
+title: Mon application est résiliente au drainage de noeuds
+description: Est-ce que mon application est disponible si il y'a un action de maintenance
+  lancé par les admins du cluster ?
+secrets:
+  k8s:
+    KUBERNETES_CONTEXT: minikube
+tags:
+- kubernetes
+steady-state-hypothesis:
+  title: Les services sont tous disponible et en bonne santé
+  probes:
+  - type: probe
+    name: pods_in_phase
+    tolerance: true
+    provider:
+      type: python
+      module: chaosk8s.pod.probes
+      func: pods_in_phase
+      arguments:
+        label_selector: biz-app-id=retail
+        phase: Running
+        ns: experimentation2
+  - type: probe
+    name: ma-super-app-repond-normalement
+    tolerance: 200
+    provider:
+      type: http
+      url: http://192.168.64.32:30458 # ici remplacer cette url par le retour de la commande : minikube service -n experimentation2
+method:
+- type: action
+  name: drain_nodes
+  provider:
+    type: python
+    module: chaosk8s.node.actions
+    func: drain_nodes
+    arguments:
+      label_selector: role=worker
+      delete_pods_with_local_storage: true
+rollbacks:
+- type: action
+  name: uncordon_node
+  provider:
+    type: python
+    module: chaosk8s.node.actions
+    func: uncordon_node
+    arguments:
+      label_selector: role=worker
