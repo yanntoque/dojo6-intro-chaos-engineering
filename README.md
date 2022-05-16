@@ -217,16 +217,23 @@ Vous devriez arriver sur cette page d'accueil :
 
 Il suffit d'éxecuter la commande suivante depuis votre environnement virtuel python **chaostk** (que vous avez précédemment): 
 
-```pip install chaostoolkit```
+```
+pip install chaostoolkit
+```
 
 Pour vérifier qu'il est bien installé, il faut executer la commande  :
 
-```chaos --help```
+```
+chaos --help
+```
 
 Chaos Toolkit par défaut ne connaît rien à Kubernetes c'est pour cela qu'un driver a été développé, il suffit de l'installer toujours depuis l'environnement virtuel python chaostk à l'aide de la commande :
 
-```pip install chaostoolkit-kubernetes kubernetes==21.7.0```
+```
+pip install chaostoolkit-kubernetes kubernetes==21.7.0
+```
 
 
 > 👍 Si vous êtes arrivé à cette ligne c'est que tout est installé et vous allez pouvoir passer aux expérimentaions 🎉
 > Pour la première experimenation ouvrir le dossier [experimentation1](./experimentation1/README.md)
+> Pour la seconde experimenation ouvrir le dossier [experimentation2](./experimentation2/README.md)
