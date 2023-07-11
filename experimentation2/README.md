@@ -60,7 +60,7 @@ kubectl get pods -owide
 ![Step 1](docs/experimentation2_step_1.png)
 
 
-Récupérer l'url via cette commande, garder l'url car il faudra la renseigner dans le fichier de l'experimentation 2 à la ligne 19 [experiment_2_draining_nodes](./experiment_2_draining_nodes.yaml)  :
+Récupérer l'url via cette commande, garder l'url car il faudra la renseigner dans le fichier de l'experimentation 2 à la ligne 30 [experiment_2_draining_nodes](./experiment_2_draining_nodes.yaml)  :
 
 ````
 minikube service list -n experimentation2
@@ -68,14 +68,14 @@ minikube service list -n experimentation2
 
 |    NAMESPACE     |    NAME    | TARGET PORT |            URL             |
 |------------------|------------|-------------|----------------------------|
-| experimentation2 | my-service |        8080 | url à récupérer et à coller à la ligne 19 du fichier [experiment_2_draining_nodes](./experiment_2_draining_nodes.yaml) |
+| experimentation2 | my-service |        8080 | url à récupérer et à coller à la ligne 30 du fichier [experiment_2_draining_nodes](./experiment_2_draining_nodes.yaml) |
 
 
 Vous devez arriver sur une page similaire à celle-ci :
 ![pod](docs/app2.png)
 
 Regarder commment est constitué le fichier [experiment_2_draining_nodes](./experiment_2_draining_nodes.yaml).
-N'oubliez pas de remplacer l'url à la ligne 19 par la votre !
+N'oubliez pas de remplacer l'url à la ligne 30 par la votre !
 
 Vous l'aurez remarqué nous avons 1 action de drainage de noeud qui va être jouée !
 

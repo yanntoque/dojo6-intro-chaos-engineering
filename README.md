@@ -235,7 +235,7 @@ chaos --help
 Chaos Toolkit par défaut ne connaît rien à Kubernetes c'est pour cela qu'un driver a été développé, il suffit de l'installer toujours depuis l'environnement virtuel python chaostk à l'aide de la commande :
 
 ```
-pip install chaostoolkit-kubernetes kubernetes==21.7.0
+pip install chaostoolkit-kubernetes==0.26.2 kubernetes==21.7.0
 ```
 
 
